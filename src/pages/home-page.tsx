@@ -191,6 +191,7 @@ function AppsSection() {
             buttonText="Install Free"
             buttonHref="https://apps.shopify.com/bulk-delete-orders"
             rating={5.0}
+            detailsLink="/apps/bulk-delete-orders"
           />
           <AppCard
             icon="/resources/default_address_lock.png"
