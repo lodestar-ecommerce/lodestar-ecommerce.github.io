@@ -79,6 +79,8 @@ interface AppCardProps {
   buttonHref?: string;
   buttonDisabled?: boolean;
   detailsLink?: string;
+  rating?: number;
+  isComingSoon?: boolean;
 }
 
 function AppCard({
@@ -89,15 +91,32 @@ function AppCard({
   buttonHref,
   buttonDisabled = false,
   detailsLink,
+  rating,
+  isComingSoon = false,
 }: AppCardProps) {
   return (
-    <div className="bg-white rounded-xl p-8 shadow-sm animate-fade-in-up-delay-1">
+    <div className={`bg-white rounded-2xl p-8 shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${isComingSoon ? 'relative overflow-hidden' : ''}`}>
+      {/* Coming Soon badge */}
+      {isComingSoon && (
+        <div className="absolute top-4 right-4 px-3 py-1 bg-[#FFF3CD] text-[#856404] text-xs font-semibold rounded-full">
+          Coming Soon
+        </div>
+      )}
+
       <div className="flex items-center gap-6 mb-6 md:flex-col md:text-center">
-        <div className="w-20 h-20 rounded-2xl shrink-0 overflow-hidden">
+        <div className={`w-24 h-24 rounded-2xl shrink-0 overflow-hidden shadow-sm ${isComingSoon ? 'opacity-80' : ''}`}>
           <img src={icon} alt={title} className="w-full h-full object-cover" />
         </div>
         <div>
-          <h3 className="text-3xl font-bold text-[#202223] md:text-2xl">{title}</h3>
+          <div className="flex items-center gap-3 md:justify-center">
+            <h3 className="text-3xl font-bold text-[#202223] md:text-2xl">{title}</h3>
+            {rating && (
+              <div className="flex items-center gap-1 px-2 py-1 bg-[#FFF8E1] rounded-lg">
+                <Star className="w-4 h-4 text-[#F5C518] fill-current" />
+                <span className="text-sm font-semibold text-[#202223]">{rating.toFixed(1)}</span>
+              </div>
+            )}
+          </div>
         </div>
       </div>
       <div className="flex flex-col gap-4">
@@ -110,7 +129,7 @@ function AppCard({
           {buttonDisabled ? (
             <button
               disabled
-              className="bg-[#C9CCCF] text-white px-6 py-3.5 rounded-lg text-base font-semibold cursor-not-allowed"
+              className="bg-[#C9CCCF] text-white px-6 py-3.5 rounded-xl text-base font-semibold cursor-not-allowed"
             >
               {buttonText}
             </button>
@@ -119,7 +138,7 @@ function AppCard({
               href={buttonHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#00A87B] text-white px-6 py-3.5 rounded-lg text-base font-semibold cursor-pointer hover:bg-[#008060] transition-colors no-underline"
+              className="bg-[#00A87B] text-white px-6 py-3.5 rounded-xl text-base font-semibold cursor-pointer hover:bg-[#008060] hover:shadow-lg transition-all duration-200 no-underline"
             >
               {buttonText}
             </a>
@@ -127,7 +146,7 @@ function AppCard({
           {detailsLink && (
             <Link
               to={detailsLink}
-              className="bg-white border-2 border-[#00A87B] text-[#00A87B] px-6 py-3 rounded-lg text-base font-semibold hover:bg-[#00A87B] hover:text-white transition-colors no-underline"
+              className="bg-white border-2 border-[#00A87B] text-[#00A87B] px-6 py-3 rounded-xl text-base font-semibold hover:bg-[#00A87B] hover:text-white transition-all duration-200 no-underline"
             >
               Learn More
             </Link>
@@ -138,14 +157,22 @@ function AppCard({
   );
 }
 
-function FeaturedAppsSection() {
+function AppsSection() {
   return (
-    <section className="py-10 px-6 bg-white">
+    <section id="apps" className="py-16 md:py-20 px-6 bg-[#F6F6F7]">
       <div className="max-w-[1200px] mx-auto">
-        <h2 className="text-center text-4xl font-bold mb-12 text-[#202223] md:text-3xl">
-          Featured Apps
-        </h2>
-        <div className="max-w-[800px] mx-auto space-y-8">
+        {/* Section header */}
+        <div className="text-center mb-12">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-[#202223]">
+            Our Shopify Apps
+          </h2>
+          <p className="text-lg text-[#6D7175] max-w-[600px] mx-auto">
+            Simple, powerful tools to streamline your store operations
+          </p>
+        </div>
+
+        {/* Apps grid */}
+        <div className="max-w-[900px] mx-auto space-y-6">
           <AppCard
             icon="/resources/bulk_delete_orders.png"
             title="Bulk Delete Orders"
@@ -154,8 +181,9 @@ function FeaturedAppsSection() {
               'Orders are automatically cancelled before deletion - no manual steps required',
               'Track all deletion jobs and export reports in Job History',
             ]}
-            buttonText="View on Shopify App Store"
+            buttonText="Install Free"
             buttonHref="https://apps.shopify.com/bulk-delete-orders"
+            rating={5.0}
           />
           <AppCard
             icon="/resources/default_address_lock.png"
@@ -165,10 +193,22 @@ function FeaturedAppsSection() {
               'Smart detection distinguishes order-triggered changes from manual updates',
               'Perfect for gift stores, B2B merchants, and CRM-integrated shops',
             ]}
-            buttonText="Coming Soon"
+            buttonText="Notify Me"
             buttonDisabled
             detailsLink="/apps/default-address-lock"
+            isComingSoon
           />
+        </div>
+
+        {/* Mid-page CTA */}
+        <div className="text-center mt-12">
+          <p className="text-lg text-[#6D7175] mb-4">More apps in development</p>
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2 text-[#00A87B] font-semibold hover:text-[#008060] transition-colors"
+          >
+            Get notified when we launch new apps →
+          </a>
         </div>
       </div>
     </section>
@@ -236,8 +276,8 @@ function TestimonialsSection() {
         {/* Testimonials grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-[900px] mx-auto">
           <TestimonialCard
-            quote="Bulk Delete Orders saved me hours of manual work. Simple, effective, and exactly what I needed."
-            name="Sarah M."
+            quote="Your app saved my team about 8 hours of clicking buttons in Shopify, and turned it into a 5 minute project. Thanks, and good luck!"
+            name="Jared"
             role="Store Owner"
           />
           <TestimonialCard
@@ -339,86 +379,6 @@ function AboutSection() {
             quality that we&apos;d demand for our own stores. When you choose Gemify, you&apos;re
             choosing a partner dedicated to your success.
           </p>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-interface SmallAppCardProps {
-  icon: string;
-  title: string;
-  description: string;
-  buttonText: string;
-  buttonHref?: string;
-  buttonDisabled?: boolean;
-}
-
-function SmallAppCard({
-  icon,
-  title,
-  description,
-  buttonText,
-  buttonHref,
-  buttonDisabled,
-}: SmallAppCardProps) {
-  return (
-    <div className="bg-white rounded-xl p-8 text-center transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
-      <div className="w-20 h-20 mx-auto mb-5 rounded-2xl overflow-hidden">
-        <img src={icon} alt={title} className="w-full h-full object-cover" />
-      </div>
-      <h3 className="text-2xl font-bold mb-3 text-[#202223]">{title}</h3>
-      <p className="text-base text-[#6D7175] mb-5 leading-relaxed">{description}</p>
-      {buttonDisabled ? (
-        <button
-          disabled
-          className="bg-[#C9CCCF] text-white px-6 py-3.5 rounded-lg text-base font-semibold cursor-not-allowed"
-        >
-          {buttonText}
-        </button>
-      ) : (
-        <a
-          href={buttonHref}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block bg-[#00A87B] text-white px-6 py-3.5 rounded-lg text-base font-semibold cursor-pointer hover:bg-[#008060] transition-colors no-underline"
-        >
-          {buttonText}
-        </a>
-      )}
-    </div>
-  );
-}
-
-function OurAppsSection() {
-  return (
-    <section id="apps" className="py-16 px-6 bg-[#F6F6F7]">
-      <div className="max-w-[1200px] mx-auto">
-        <h2 className="text-center text-4xl font-bold mb-12 text-[#202223] md:text-3xl">
-          Our Apps
-        </h2>
-        <div className="grid grid-cols-3 gap-6 max-w-[1200px] mx-auto md:grid-cols-1">
-          <SmallAppCard
-            icon="/resources/bulk_delete_orders.png"
-            title="Bulk Delete Orders"
-            description="Efficiently manage your store by deleting multiple orders at once with powerful filtering options and automatic cancellation."
-            buttonText="View App"
-            buttonHref="https://apps.shopify.com/bulk-delete-orders"
-          />
-          <SmallAppCard
-            icon="/resources/default_address_lock.png"
-            title="Default Address Lock"
-            description="Protect your customers' default addresses from being overwritten when they ship orders to different locations. Smart detection, automatic restoration."
-            buttonText="Coming Soon"
-            buttonDisabled
-          />
-          <SmallAppCard
-            icon="/resources/gemify.png"
-            title="More Apps Coming Soon"
-            description="We're working on exciting new tools to help you manage and grow your Shopify store. Stay tuned for updates!"
-            buttonText="Coming Soon"
-            buttonDisabled
-          />
         </div>
       </div>
     </section>
@@ -556,11 +516,10 @@ export function HomePage() {
   return (
     <div>
       <HeroSection />
-      <FeaturedAppsSection />
+      <AppsSection />
       <TestimonialsSection />
       <WhyChooseSection />
       <AboutSection />
-      <OurAppsSection />
       <ContactSection />
     </div>
   );
