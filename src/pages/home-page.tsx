@@ -200,10 +200,9 @@ function AppsSection() {
               'Smart detection distinguishes order-triggered changes from manual updates',
               'Perfect for gift stores, B2B merchants, and CRM-integrated shops',
             ]}
-            buttonText="Notify Me"
-            buttonDisabled
+            buttonText="Install Free"
+            buttonHref="https://apps.shopify.com/default-address-lock"
             detailsLink="/apps/default-address-lock"
-            isComingSoon
           />
         </div>
 
