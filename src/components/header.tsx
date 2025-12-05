@@ -32,25 +32,25 @@ export function Header({ showLogo = true }: HeaderProps) {
         {/* Navigation - Desktop Only */}
         <nav aria-label="Main navigation" className="hidden md:flex items-center gap-8">
           <a
-            href="#apps"
+            href="/#apps"
             className="text-[#202223] no-underline text-sm font-medium hover:text-[#00A87B] transition-colors"
           >
             Apps
           </a>
           <a
-            href="#about"
+            href="/#about"
             className="text-[#202223] no-underline text-sm font-medium hover:text-[#00A87B] transition-colors"
           >
             About
           </a>
           <a
-            href="#contact"
+            href="/#contact"
             className="text-[#202223] no-underline text-sm font-medium hover:text-[#00A87B] transition-colors"
           >
             Contact
           </a>
           <a
-            href="#apps"
+            href="/#apps"
             className="bg-[#00A87B] text-white px-5 py-2.5 rounded-lg text-sm font-semibold no-underline hover:bg-[#008060] transition-colors"
           >
             Explore Apps
