@@ -227,7 +227,8 @@ function TestimonialsSection() {
     {
       quote: "Your app saved my team about 8 hours of clicking buttons in Shopify, and turned it into a 5 minute project.",
       name: "Jared",
-      role: "Store Owner",
+      role: "Barbell Standard",
+      url: "https://barbellstandard.com",
     },
     {
       quote: "Finally, apps that just work without complicated setup. The support team is incredibly responsive too.",
@@ -263,7 +264,14 @@ function TestimonialsSection() {
                     {t.name.charAt(0)}
                   </div>
                   <span className="text-xs text-[#616569]">
-                    <strong className="text-[#202223] font-medium">{t.name}</strong> · {t.role}
+                    <strong className="text-[#202223] font-medium">{t.name}</strong> ·{' '}
+                    {t.url ? (
+                      <a href={t.url} target="_blank" rel="noopener noreferrer" className="text-[#00A87B] hover:underline">
+                        {t.role}
+                      </a>
+                    ) : (
+                      t.role
+                    )}
                   </span>
                 </div>
               </div>
