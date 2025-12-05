@@ -7,6 +7,7 @@ interface LayoutProps {
   showHeader?: boolean;
   showFooter?: boolean;
   showHeaderLogo?: boolean;
+  showFooterCTA?: boolean;
 }
 
 export function Layout({
@@ -14,12 +15,13 @@ export function Layout({
   showHeader = true,
   showFooter = true,
   showHeaderLogo = true,
+  showFooterCTA = true,
 }: LayoutProps) {
   return (
     <div className="min-h-screen flex flex-col">
       {showHeader && <Header showLogo={showHeaderLogo} />}
       <main className="flex-1">{children}</main>
-      {showFooter && <Footer />}
+      {showFooter && <Footer showCTA={showFooterCTA} />}
     </div>
   );
 }

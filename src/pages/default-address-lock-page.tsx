@@ -167,7 +167,7 @@ function FeatureCard({ icon, title, description }: FeatureCardProps) {
 
 export function DefaultAddressLockPage() {
   return (
-    <Layout>
+    <Layout showFooterCTA={false}>
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-[#F6F6F7] to-white py-16 px-6">
         <div className="max-w-4xl mx-auto text-center">

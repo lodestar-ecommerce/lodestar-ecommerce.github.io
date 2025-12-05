@@ -1,25 +1,31 @@
 import { Link } from 'react-router-dom';
 
-export function Footer() {
+interface FooterProps {
+  showCTA?: boolean;
+}
+
+export function Footer({ showCTA = true }: FooterProps) {
   return (
     <>
-      {/* Final CTA Section */}
-      <section className="bg-gradient-to-r from-[#00A87B] to-[#00BFA5] py-16 px-6 text-center">
-        <div className="max-w-[800px] mx-auto">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">
-            Ready to simplify your Shopify store?
-          </h2>
-          <p className="text-white/90 text-lg mb-8">
-            Join hundreds of merchants using our apps to save time and grow sales.
-          </p>
-          <a
-            href="#apps"
-            className="inline-block bg-white text-[#00A87B] px-8 py-4 rounded-xl text-lg font-semibold no-underline hover:bg-gray-100 transition-colors shadow-lg"
-          >
-            Explore Our Apps
-          </a>
-        </div>
-      </section>
+      {/* Final CTA Section - Only on homepage */}
+      {showCTA && (
+        <section className="bg-gradient-to-r from-[#00A87B] to-[#00BFA5] py-16 px-6 text-center">
+          <div className="max-w-[800px] mx-auto">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+              Ready to simplify your Shopify store?
+            </h2>
+            <p className="text-white/90 text-lg mb-8">
+              Join hundreds of merchants using our apps to save time and grow sales.
+            </p>
+            <a
+              href="#apps"
+              className="inline-block bg-white text-[#00A87B] px-8 py-4 rounded-xl text-lg font-semibold no-underline hover:bg-gray-100 transition-colors shadow-lg"
+            >
+              Explore Our Apps
+            </a>
+          </div>
+        </section>
+      )}
 
       {/* Footer */}
       <footer role="contentinfo" className="bg-[#202223] text-white py-12 px-6">

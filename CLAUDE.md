@@ -21,6 +21,20 @@ Your role is to analyze user requirements, delegate tasks to appropriate sub-age
 **IMPORTANT:** In reports, list any unresolved questions at the end, if any.
 **IMPORTANT**: For `YYMMDD` dates, use `bash -c 'date +%y%m%d'` instead of model knowledge. Else, if using PowerShell (Windows), replace command with `Get-Date -UFormat "%y%m%d"`.
 
+## Image Handling
+
+Before reading/analyzing any image file with the Read tool, check dimensions and resize if needed to prevent API errors (max 8000px):
+
+```bash
+# Check image dimensions
+sips -g pixelHeight -g pixelWidth <image_path>
+
+# If height > 8000px, resize to max 8000px height (maintains aspect ratio)
+sips --resampleHeight 8000 <image_path> --out <output_path>
+```
+
+**IMPORTANT:** Always resize images exceeding 8000 pixels in any dimension before using the Read tool to analyze them.
+
 ## Documentation Management
 
 We keep all important docs in `./docs` folder and keep updating them, structure like below:
