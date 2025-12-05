@@ -2,7 +2,7 @@
 
 Marketing website for Gemify Shopify apps. Professional, fast, accessible SPA built with React 19 + TypeScript + Tailwind CSS.
 
-**Live:** [gemify.example.com](https://gemify.example.com) | **Status:** v1.0.0 (Production Ready)
+**Live:** [gemify-ecom.github.io](https://gemify-ecom.github.io) | **Status:** v1.0.0 (Production Ready)
 
 ---
 
@@ -234,22 +234,24 @@ See [Project Roadmap](./docs/project-overview-pdr.md#roadmap) for full details.
 
 ## Deployment
 
-### Recommended: Vercel
-```bash
-# Install Vercel CLI
-npm i -g vercel
+### GitHub Pages (Current)
+Automatically deployed via GitHub Actions on push to `master` branch.
 
-# Deploy
-vercel
+**URL:** https://gemify-ecom.github.io
+
+**Workflow:** `.github/workflows/deploy.yml`
+- Builds with Node 20
+- Deploys to GitHub Pages
+- Includes 404.html for SPA routing
+
+### Alternative: Vercel
+```bash
+npm i -g vercel && vercel
 ```
 
 ### Alternative: Netlify
 ```bash
-# Install Netlify CLI
-npm i -g netlify-cli
-
-# Deploy
-netlify deploy --prod --dir dist
+npm i -g netlify-cli && netlify deploy --prod --dir dist
 ```
 
 ### Any Static Host
