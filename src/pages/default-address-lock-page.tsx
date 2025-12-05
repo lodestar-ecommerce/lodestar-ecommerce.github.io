@@ -6,7 +6,7 @@ function AddressFlowDiagram() {
   return (
     <div className="bg-gray-50 p-8">
       <h2 className="text-2xl font-bold text-center text-gray-800 mb-8">
-        Default Address Protection
+        Default Address Lock
       </h2>
 
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -160,7 +160,7 @@ function FeatureCard({ icon, title, description }: FeatureCardProps) {
         {icon}
       </div>
       <h3 className="text-lg font-semibold text-[#202223] mb-2">{title}</h3>
-      <p className="text-[#6D7175] text-sm leading-relaxed">{description}</p>
+      <p className="text-[#616569] text-sm leading-relaxed">{description}</p>
     </div>
   );
 }
@@ -203,16 +203,16 @@ function PricingCard({
         >
           {price}
         </span>
-        <span className={`text-sm ${highlighted ? 'text-white/80' : 'text-[#6D7175]'}`}>
+        <span className={`text-sm ${highlighted ? 'text-white/80' : 'text-[#616569]'}`}>
           /{period}
         </span>
         {yearlyPrice && (
-          <p className={`text-xs mt-1 ${highlighted ? 'text-white/70' : 'text-[#6D7175]'}`}>
+          <p className={`text-xs mt-1 ${highlighted ? 'text-white/70' : 'text-[#616569]'}`}>
             or {yearlyPrice}/year (save 17%)
           </p>
         )}
       </div>
-      <p className={`text-sm mb-4 ${highlighted ? 'text-white/90' : 'text-[#6D7175]'}`}>
+      <p className={`text-sm mb-4 ${highlighted ? 'text-white/90' : 'text-[#616569]'}`}>
         {description}
       </p>
       <ul className="space-y-2">
@@ -249,23 +249,25 @@ export function DefaultAddressLockPage() {
           <h1 className="text-4xl md:text-5xl font-bold text-[#202223] mb-4">
             Default Address Lock
           </h1>
-          <p className="text-xl text-[#6D7175] mb-6 max-w-2xl mx-auto">
+          <p className="text-xl text-[#616569] mb-6 max-w-2xl mx-auto">
             Prevent Shopify from overwriting your customers&apos; default addresses when they
             ship orders to different locations.
           </p>
           <div className="flex justify-center gap-4 flex-wrap">
-            <button
-              disabled
-              className="bg-[#C9CCCF] text-white px-8 py-4 rounded-lg text-lg font-semibold cursor-not-allowed"
-            >
-              Coming Soon
-            </button>
             <a
-              href="mailto:sean.gemify@gmail.com?subject=Default Address Lock Beta Interest"
+              href="https://apps.shopify.com/default-address-lock"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#00A87B] text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-[#008060] hover:shadow-lg transition-all no-underline"
+            >
+              Install Free
+            </a>
+            <Link
+              to="/#contact"
               className="bg-white border-2 border-[#00A87B] text-[#00A87B] px-8 py-4 rounded-lg text-lg font-semibold hover:bg-[#00A87B] hover:text-white transition-colors no-underline"
             >
-              Join Beta Waitlist
-            </a>
+              Contact Us
+            </Link>
           </div>
         </div>
       </section>
@@ -276,7 +278,7 @@ export function DefaultAddressLockPage() {
           <h2 className="text-3xl font-bold text-center text-[#202223] mb-4">
             The Problem
           </h2>
-          <p className="text-center text-[#6D7175] mb-12 max-w-2xl mx-auto">
+          <p className="text-center text-[#616569] mb-12 max-w-2xl mx-auto">
             Since 2015, Shopify has automatically changed customers&apos; default addresses
             whenever they place an order with a different shipping address. This causes
             major headaches for merchants.
@@ -336,7 +338,7 @@ export function DefaultAddressLockPage() {
           <h2 className="text-3xl font-bold text-center text-[#202223] mb-4">
             How It Works
           </h2>
-          <p className="text-center text-[#6D7175] mb-12 max-w-2xl mx-auto">
+          <p className="text-center text-[#616569] mb-12 max-w-2xl mx-auto">
             Our app intelligently monitors address changes and automatically restores the
             original default address when Shopify tries to overwrite it.
           </p>
@@ -367,7 +369,7 @@ export function DefaultAddressLockPage() {
           <h2 className="text-3xl font-bold text-center text-[#202223] mb-4">
             Simple, Order-Based Pricing
           </h2>
-          <p className="text-center text-[#6D7175] mb-12 max-w-2xl mx-auto">
+          <p className="text-center text-[#616569] mb-12 max-w-2xl mx-auto">
             Pay only for what you use. Our pricing scales with your order volume.
           </p>
 
@@ -412,18 +414,20 @@ export function DefaultAddressLockPage() {
       <section className="py-16 px-6 bg-gradient-to-br from-[#00A87B] to-[#008060]">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-white mb-4">
-            Be the First to Know
+            Ready to Protect Your Customer Addresses?
           </h2>
           <p className="text-white/90 mb-8">
-            Default Address Lock is coming soon. Join our beta waitlist to get early access
-            and exclusive launch pricing.
+            Install Default Address Lock today and stop Shopify from overwriting your
+            customers&apos; default addresses. Free plan available for small stores.
           </p>
           <div className="flex justify-center gap-4 flex-wrap">
             <a
-              href="mailto:sean.gemify@gmail.com?subject=Default Address Lock Beta Interest"
+              href="https://apps.shopify.com/default-address-lock"
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-white text-[#00A87B] px-8 py-4 rounded-lg text-lg font-semibold hover:shadow-lg transition-shadow no-underline"
             >
-              Join Beta Waitlist
+              Install Free on Shopify
             </a>
             <Link
               to="/faq#default-address-lock-app"
