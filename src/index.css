@@ -183,7 +183,8 @@ body {
   .animate-fade-in-up-delay-2,
   .animate-fade-in-up-delay-3,
   .animate-fade-in,
-  .animate-scale-in {
+  .animate-scale-in,
+  .animate-pulse {
     animation: none;
   }
 
@@ -249,4 +250,11 @@ body {
 .btn-gradient:hover {
   opacity: 0.9;
   transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   Gradient Utilities
+   ========================================================================== */
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-stops));
 }

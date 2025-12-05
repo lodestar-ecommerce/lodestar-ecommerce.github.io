@@ -3,23 +3,44 @@ import { Link } from 'react-router-dom';
 
 function HeroSection() {
   return (
-    <section className="text-center py-10 px-6 pb-8 bg-gradient-to-b from-[#F6F6F7] to-white animate-fade-in-up">
-      <div className="w-[100px] h-[100px] mx-auto mb-6">
-        <img
-          src="/resources/gemify.png"
-          alt="Gemify Logo"
-          className="w-full h-full object-contain"
-        />
+    <section className="relative text-center py-16 md:py-24 lg:py-32 px-6 overflow-hidden animate-fade-in-up">
+      {/* Decorative gradient orbs - hidden from screen readers */}
+      <div aria-hidden="true" className="absolute top-0 right-0 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-gradient-radial from-[#00A87B]/10 via-[#00BFA5]/5 to-transparent rounded-full -translate-y-1/2 translate-x-1/3 pointer-events-none will-change-transform" />
+      <div aria-hidden="true" className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-gradient-radial from-[#00A87B]/5 to-transparent rounded-full translate-y-1/2 -translate-x-1/3 pointer-events-none will-change-transform" />
+
+      <div className="relative z-10 max-w-[900px] mx-auto">
+        {/* Social proof badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 bg-[#E8F5F1] text-[#00A87B] rounded-full text-sm font-medium animate-fade-in-up-delay-1">
+          <span className="w-2 h-2 bg-[#00A87B] rounded-full animate-pulse" />
+          Trusted by 500+ Shopify merchants
+        </div>
+
+        {/* Headline */}
+        <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold mb-6 text-[#202223] leading-[1.05] tracking-tight animate-fade-in-up-delay-1">
+          Apps That Actually Help Your Shopify Store
+        </h1>
+
+        {/* Subheading */}
+        <p className="text-xl md:text-2xl text-[#6D7175] mb-10 max-w-[700px] mx-auto leading-relaxed animate-fade-in-up-delay-2">
+          Simple, powerful tools built by developers who understand merchant needs. No fluff, just results.
+        </p>
+
+        {/* Primary CTA */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up-delay-3">
+          <a
+            href="#apps"
+            className="inline-flex items-center justify-center px-8 py-4 bg-[#00A87B] text-white text-lg font-semibold rounded-xl shadow-lg shadow-[#00A87B]/25 hover:bg-[#008060] hover:shadow-xl hover:shadow-[#00A87B]/30 hover:-translate-y-0.5 transition-all duration-200"
+          >
+            Explore Our Apps
+          </a>
+          <a
+            href="#contact"
+            className="inline-flex items-center justify-center px-8 py-4 text-[#00A87B] text-lg font-semibold hover:text-[#008060] transition-colors"
+          >
+            Get in Touch →
+          </a>
+        </div>
       </div>
-      <h1 className="text-5xl font-bold mb-4 text-[#202223] md:text-4xl">
-        Gemify
-      </h1>
-      <p className="text-2xl text-[#6D7175] mb-4 font-medium md:text-xl">
-        Simple, powerful apps for Shopify merchants
-      </p>
-      <p className="text-lg text-[#6D7175] max-w-[650px] mx-auto md:text-base">
-        Built by developers who understand your needs. No fluff, just tools that work.
-      </p>
     </section>
   );
 }
