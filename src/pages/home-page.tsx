@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
-import { Store, Shield, MessageCircle } from 'lucide-react';
+import { Store, Shield, MessageCircle, Quote, Lock, Star } from 'lucide-react';
 
 function HeroSection() {
   return (
@@ -40,6 +40,18 @@ function HeroSection() {
           >
             Get in Touch →
           </a>
+        </div>
+
+        {/* Trust badge */}
+        <div className="flex items-center justify-center gap-2 mt-8 text-sm text-[#6D7175] animate-fade-in-up-delay-3">
+          <div className="flex items-center gap-1 text-[#F5C518]">
+            <Star className="w-4 h-4 fill-current" />
+            <Star className="w-4 h-4 fill-current" />
+            <Star className="w-4 h-4 fill-current" />
+            <Star className="w-4 h-4 fill-current" />
+            <Star className="w-4 h-4 fill-current" />
+          </div>
+          <span className="text-[#6D7175]">5-star rated on Shopify App Store</span>
         </div>
       </div>
     </section>
@@ -156,6 +168,82 @@ function FeaturedAppsSection() {
             buttonText="Coming Soon"
             buttonDisabled
             detailsLink="/apps/default-address-lock"
+          />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+interface TestimonialCardProps {
+  quote: string;
+  name: string;
+  role: string;
+  rating?: number;
+}
+
+function TestimonialCard({ quote, name, role, rating = 5 }: TestimonialCardProps) {
+  return (
+    <div className="bg-white rounded-2xl p-8 shadow-md hover:shadow-lg transition-shadow duration-300 relative">
+      {/* Decorative quote mark */}
+      <Quote
+        className="absolute top-6 left-6 w-8 h-8 text-[#00A87B]/20"
+        aria-hidden="true"
+      />
+
+      {/* Star rating */}
+      {rating > 0 && (
+        <div className="flex items-center gap-1 mb-4 text-[#F5C518]">
+          {Array.from({ length: rating }).map((_, i) => (
+            <Star key={i} className="w-4 h-4 fill-current" />
+          ))}
+        </div>
+      )}
+
+      {/* Quote text */}
+      <blockquote className="text-lg text-[#202223] leading-relaxed mb-6 pl-4">
+        "{quote}"
+      </blockquote>
+
+      {/* Attribution */}
+      <div className="flex items-center gap-3">
+        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#00A87B] to-[#008060] flex items-center justify-center text-white font-semibold text-sm">
+          {name.charAt(0)}
+        </div>
+        <div>
+          <div className="font-semibold text-[#202223]">{name}</div>
+          <div className="text-sm text-[#6D7175]">{role}</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function TestimonialsSection() {
+  return (
+    <section className="py-16 md:py-20 px-6 bg-[#F6F6F7]">
+      <div className="max-w-[1200px] mx-auto">
+        {/* Section header */}
+        <div className="text-center mb-12">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-[#202223]">
+            What Merchants Say
+          </h2>
+          <p className="text-lg text-[#6D7175] max-w-[600px] mx-auto">
+            Don't just take our word for it
+          </p>
+        </div>
+
+        {/* Testimonials grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-[900px] mx-auto">
+          <TestimonialCard
+            quote="Bulk Delete Orders saved me hours of manual work. Simple, effective, and exactly what I needed."
+            name="Sarah M."
+            role="Store Owner"
+          />
+          <TestimonialCard
+            quote="Finally, apps that just work without complicated setup. The support team is incredibly responsive too."
+            name="Michael T."
+            role="Shopify Plus Merchant"
           />
         </div>
       </div>
@@ -451,6 +539,12 @@ function ContactSection() {
             >
               {isSubmitting ? 'Sending...' : isSuccess ? 'Message Sent' : 'Send Message'}
             </button>
+
+            {/* Security indicator */}
+            <div className="flex items-center justify-center gap-2 text-sm text-[#6D7175]">
+              <Lock className="w-4 h-4" />
+              <span>Your information is secure and will never be shared</span>
+            </div>
           </form>
         </div>
       </div>
@@ -463,6 +557,7 @@ export function HomePage() {
     <div>
       <HeroSection />
       <FeaturedAppsSection />
+      <TestimonialsSection />
       <WhyChooseSection />
       <AboutSection />
       <OurAppsSection />
