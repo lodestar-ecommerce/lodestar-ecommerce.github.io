@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
+import { Store, Shield, MessageCircle } from 'lucide-react';
 
 function HeroSection() {
   return (
@@ -163,7 +164,7 @@ function FeaturedAppsSection() {
 }
 
 interface BenefitCardProps {
-  icon: string;
+  icon: React.ReactNode;
   title: string;
   description: string;
   delay?: string;
@@ -172,12 +173,12 @@ interface BenefitCardProps {
 function BenefitCard({ icon, title, description, delay = '' }: BenefitCardProps) {
   return (
     <div
-      className={`bg-white/95 rounded-2xl p-10 px-8 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl backdrop-blur-sm ${delay}`}
+      className={`bg-white/95 backdrop-blur-sm rounded-2xl p-8 text-center border border-white/20 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl will-change-transform ${delay}`}
     >
-      <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-[#00A87B] to-[#008060] rounded-full flex items-center justify-center text-4xl">
-        {icon}
+      <div className="w-16 h-16 mx-auto mb-5 bg-gradient-to-br from-[#00A87B] to-[#008060] rounded-2xl flex items-center justify-center">
+        <div className="text-white">{icon}</div>
       </div>
-      <h3 className="text-[22px] font-bold mb-3 text-[#202223]">{title}</h3>
+      <h3 className="font-heading text-xl font-bold mb-3 text-[#202223]">{title}</h3>
       <p className="text-base leading-relaxed text-[#6D7175]">{description}</p>
     </div>
   );
@@ -185,29 +186,40 @@ function BenefitCard({ icon, title, description, delay = '' }: BenefitCardProps)
 
 function WhyChooseSection() {
   return (
-    <section className="py-16 px-6 bg-gradient-to-br from-[#00A87B] to-[#008060] relative overflow-hidden">
-      <div className="absolute -top-1/2 -right-[10%] w-[500px] h-[500px] bg-white/10 rounded-full z-0" />
+    <section className="py-16 md:py-20 px-6 bg-gradient-to-br from-[#00A87B] to-[#008060] relative overflow-hidden">
+      {/* Decorative elements */}
+      <div aria-hidden="true" className="absolute -top-1/2 -right-[10%] w-[500px] h-[500px] bg-white/10 rounded-full" />
+      <div aria-hidden="true" className="absolute -bottom-1/4 -left-[5%] w-[300px] h-[300px] bg-white/5 rounded-full" />
+
       <div className="max-w-[1200px] mx-auto relative z-10">
-        <h2 className="text-center text-4xl font-bold mb-12 text-white md:text-3xl">
-          Why Choose Gemify
-        </h2>
-        <div className="grid grid-cols-3 gap-8 max-w-[1200px] mx-auto md:grid-cols-1">
+        {/* Section header */}
+        <div className="text-center mb-12">
+          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
+            Why Merchants Choose Gemify
+          </h2>
+          <p className="text-lg text-white/80 max-w-[600px] mx-auto">
+            Tools built with your success in mind
+          </p>
+        </div>
+
+        {/* Feature grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           <BenefitCard
-            icon="&#9889;"
-            title="Built by Shopify Experts"
-            description="Our team has years of experience building high-quality apps for the Shopify ecosystem."
+            icon={<Store className="w-8 h-8" />}
+            title="Shopify Expertise"
+            description="Built by certified Shopify experts who understand your daily challenges and merchant needs."
             delay="animate-fade-in-up-delay-1"
           />
           <BenefitCard
-            icon="&#128737;"
-            title="Reliable and Secure"
-            description="Enterprise-grade security and reliability you can trust with your store data."
+            icon={<Shield className="w-8 h-8" />}
+            title="Enterprise Security"
+            description="Bank-grade security protecting your store data 24/7 with industry-leading practices."
             delay="animate-fade-in-up-delay-2"
           />
           <BenefitCard
-            icon="&#128172;"
-            title="Excellent Support"
-            description="Dedicated support team ready to help you succeed with our apps."
+            icon={<MessageCircle className="w-8 h-8" />}
+            title="Responsive Support"
+            description="Real human support ready to help when you need it. No bots, just genuine assistance."
             delay="animate-fade-in-up-delay-3"
           />
         </div>
